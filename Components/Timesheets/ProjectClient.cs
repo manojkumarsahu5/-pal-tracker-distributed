@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System;
+using System.Net.Http.Headers;
 
 namespace Timesheets
 {
@@ -28,6 +29,8 @@ namespace Timesheets
         {
              var token = await _accessTokenFn();
             _client.DefaultRequestHeaders.Accept.Clear();
+            
+             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var streamTask = _client.GetStreamAsync($"project?projectId={projectId}");
 
             _logger.LogInformation($"Attempting to fetch projectId: {projectId}");
