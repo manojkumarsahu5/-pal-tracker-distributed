@@ -26,6 +26,7 @@ namespace Backlog
 
         private async Task<ProjectInfo> DoGet(long projectId)
         {
+             var token = await _accessTokenFn();
             _client.DefaultRequestHeaders.Accept.Clear();
             var streamTask = _client.GetStreamAsync($"project?projectId={projectId}");
 
