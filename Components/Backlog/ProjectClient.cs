@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System;
+using System.Net.Http.Headers;
 
 namespace Backlog
 {
